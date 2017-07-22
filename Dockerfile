@@ -10,6 +10,6 @@ RUN  echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
      echo "deb http://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list && \
      add-apt-repository -y ppa:fkrull/deadsnakes && \
      apt-get update -y && \
-     apt-get install -y git cf-cli curl python3.6 && \
+     apt-get install -y git cf-cli curl python3.6 python3-pip && \
      apt-get clean && apt-get autoremove && \
      rm -rf /var/lib/cache/* /var/lib/log/* /tmp/* /var/tmp/*
