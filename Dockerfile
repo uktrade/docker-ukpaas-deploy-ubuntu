@@ -1,12 +1,10 @@
 FROM ubuntu:16.04
 
-RUN mkdir -p /var/jenkins_home/workspace/directory-ui-supplier-dev
-WORKDIR /var/jenkins_home/workspace/directory-ui-supplier-dev
-
-# For debconf not to complain
 ENV  DEBIAN_FRONTEND noninteractive
-
-RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+RUN mkdir -p /var/jenkins_home/workspace/directory-ui-supplier-dev && \
+ cd /var/jenkins_home/workspace/directory-ui-supplier-dev && \
+ sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \ 
+ echo running_point && \
  apt-get -y update && \
  apt-get -y upgrade && \
  apt-get install -y git && \
