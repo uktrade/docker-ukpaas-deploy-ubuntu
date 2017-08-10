@@ -1,9 +1,14 @@
 FROM ubuntu:16.04
 
+RUN mkdir -p /var/jenkins_home/workspace/directory-ui-supplier-dev
+WORKDIR /var/jenkins_home/workspace/directory-ui-supplier-dev
+
 # For debconf not to complain
 ENV  DEBIAN_FRONTEND noninteractive
 
-RUN  apt-get update -y 
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get -y upgrade
 RUN  apt-get install -y git
 RUN  apt-get install -y gettext
 RUN  apt-get install -y cf-cli python3.5.3 python3-pip 
