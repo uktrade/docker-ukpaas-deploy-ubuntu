@@ -14,6 +14,6 @@ RUN pip3 install jsonschema
 RUN git clone -b dev_to_gds --single-branch https://github.com/uktrade/directory-ui-supplier.git 
 RUN git pull -r 
 #RUN cp -rf ./directory-ui-supplier/* .
-#RUN python3 get_env_from_vault.py nl directory-ui-supplier directory-ui-supplier
-#RUN python3 manage.py compilemessages
 WORKDIR /var/jenkins_home/workspace/directory-ui-supplier-dev
+RUN python3 get_env_from_vault.py nl directory-ui-supplier directory-ui-supplier
+RUN python3 manage.py compilemessages
