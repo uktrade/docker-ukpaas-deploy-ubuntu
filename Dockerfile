@@ -11,13 +11,16 @@ RUN  echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup && \
      echo "deb http://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list && \
      add-apt-repository -y ppa:fkrull/deadsnakes && \
      apt-get update -y && \
-     apt-get install -y git cf-cli curl python python-pip python3.6 python3-pip nodejs npm sudo && \
-     pip install pip --upgrade && \
-     groupadd -g 1000 ubuntu && useradd -m -u 1000 -g 1000 ubuntu && \
-     echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+     apt-get install -y git cf-cli curl python3.6 nodejs npm sudo && \
+     alias pip=pip3 && \
+     alias python=python3  && \
+     apt-get install -y python3-pip  && \
      echo "alias python=python3" >> /home/ubuntu/.profile && \
      echo "alias pip=pip3" >> /home/ubuntu/.profile && \
      echo "alias python=python3" >> /root/.profile && \
      echo "alias pip=pip3" >> /root/.profile && \
+     pip install pip --upgrade && \
+     groupadd -g 1000 ubuntu && useradd -m -u 1000 -g 1000 ubuntu && \
+     echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
      apt-get clean && apt-get autoremove && \
      rm -rf /var/lib/cache/* /var/lib/log/* /tmp/* /var/tmp/*
